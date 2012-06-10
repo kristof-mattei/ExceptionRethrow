@@ -1,14 +1,16 @@
-﻿using System;
-
-namespace ConsoleApplication20
+﻿namespace ExceptionRethrow
 {
+	using System;
+
 	internal class Program
 	{
-		private static void Main(string[] args)
+		private static void Main()
 		{
 			try
 			{
-				Foo();
+				var result = (new Api()).Find("foo");
+
+				Process(result);
 			}
 			catch (Exception e)
 			{
@@ -17,25 +19,9 @@ namespace ConsoleApplication20
 			}
 		}
 
-		private static void Foo()
+		private static void Process(string result)
 		{
-			try
-			{
-				Bar();
-			}
-			catch (Exception e)
-			{
-				// handle exception
-				// ...
-				// ...
-
-				throw e;
-			}
-		}
-
-		private static void Bar()
-		{
-			throw new Exception("There is a glitch in the matrix");
+			//...
 		}
 	}
 }
